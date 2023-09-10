@@ -1,0 +1,21 @@
+{
+    "name": "melsaka/commentable",
+    "description": "Implementing a Comment system for Laravel's Eloquent models.",
+    "type": "library",
+    "require": {
+        "kalnoy/nestedset": "v6.0.2"
+    },
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Melsaka\\Commentable\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "elsaka",
+            "email": "sakaz8050@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev"
+}
