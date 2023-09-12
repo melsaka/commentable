@@ -2,9 +2,6 @@
     "name": "melsaka/commentable",
     "description": "Implementing a Comment system for Laravel's Eloquent models.",
     "type": "library",
-    "require": {
-        "kalnoy/nestedset": "v6.0.2"
-    },
     "license": "MIT",
     "autoload": {
         "psr-4": {
@@ -14,8 +11,23 @@
     "authors": [
         {
             "name": "elsaka",
-            "email": "sakaz8050@gmail.com"
+            "email": "sakaz8050@gmail.com",
+            "homepage": "https://github.com/melsaka",
+            "role": "Developer"
         }
     ],
-    "minimum-stability": "dev"
+    "require": {
+        "php": "^7.3|^8.0",
+        "laravel/framework": "^8.75",
+        "kalnoy/nestedset": "v6.0.2"
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Melsaka\\Commentable\\CommentableServiceProvider"
+            ]
+        }
+    }
 }
