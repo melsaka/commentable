@@ -11,7 +11,7 @@ trait CanComment
 {
     use ModelRelations;
 
-    private $morphName = 'owner';
+    private $commentMorph = 'owner';
 
     public function commentsAreAccepted(): bool
     {
@@ -52,12 +52,12 @@ trait CanComment
 
     public function scopeCommentsOn($query, Model $commentable): MorphMany
     {
-        return $this->comments()->where($commentable->morphsArray());
+        return $this->comments()->where(Comment::morphsArray($commentable));
     }
 
     public function hasCommentsOn(Model $commentable): bool
     {
-        return $this->comments()->where($commentable->morphsArray())->exists();
+        return $this->comments()->where(Comment::morphsArray($commentable))->exists();
     }
 
     public function commented($comment): bool

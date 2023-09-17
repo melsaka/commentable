@@ -179,7 +179,7 @@ trait CommentActions
 
     private function setCommentOwner(Model $owner): Comment
     {
-        $this->commentData['owner_id'] = $owner->primaryId();
+        $this->commentData['owner_id'] = Comment::primaryId($owner);
         $this->commentData['owner_type'] = get_class($owner);
 
         return $this;

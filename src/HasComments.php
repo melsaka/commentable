@@ -12,7 +12,7 @@ trait HasComments
 {
     use ModelRelations;
 
-    private $morphName = 'commentable';
+    private $commentMorph = 'commentable';
 
     public function commentsAreRated(): bool
     {
@@ -91,7 +91,7 @@ trait HasComments
 
     public function scopeCommentsBy($query, Model $owner): MorphMany
     {
-        return $this->comments()->where($owner->morphsArray());
+        return $this->comments()->where(Comment::morphsArray($owner));
     }
 
     public function scopeAcceptedComments($query): Builder
@@ -101,7 +101,7 @@ trait HasComments
 
     public function hasCommentsBy(Model $owner): bool
     {
-        return $this->comments()->where($owner->morphsArray())->exists();
+        return $this->comments()->where(Comment::morphsArray($owner))->exists();
     }
     
     public function hasComment($comment): bool

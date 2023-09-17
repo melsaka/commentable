@@ -10,12 +10,12 @@ trait CommentGetters
 {
     public function scopeOf($query, Model $commentable): Builder
     {
-        return $query->where($commentable->morphsArray())->onlyParents()->withRepliesCount();
+        return $query->where(Comment::morphsArray($commentable))->onlyParents()->withRepliesCount();
     }
 
     public function scopeBy($query, Model $owner): Builder
     {
-        return $query->where($owner->morphsArray())->onlyParents()->withRepliesCount();
+        return $query->where(Comment::morphsArray($owner))->onlyParents()->withRepliesCount();
     }
 
     public static function getCommentOfId($comment): Comment

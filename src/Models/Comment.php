@@ -40,4 +40,17 @@ class Comment extends Model
             Comment::where('parent_id', $model->id)->delete();
         });
     }
+
+    public static function primaryId($model): int
+    {
+        return $model->getAttribute($model->primaryKey);
+    }
+
+    public static function morphsArray($model): array
+    {
+        return [
+            $model->commentMorph.'_id'   => static::primaryId($model),
+            $model->commentMorph.'_type' => get_class($model),
+        ];
+    }
 }

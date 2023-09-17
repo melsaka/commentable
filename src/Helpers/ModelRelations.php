@@ -11,12 +11,12 @@ trait ModelRelations
 {
     public function comments(): MorphMany
     {
-        return $this->morphMany(Comment::class, $this->morphName);
+        return $this->morphMany(Comment::class, $this->commentMorph);
     }
 
     public function replies(): MorphMany
     {
-        return $this->morphMany(Comment::class, $this->morphName)->whereNotNull('parent_id');
+        return $this->morphMany(Comment::class, $this->commentMorph)->whereNotNull('parent_id');
     }
 
     // Eager Load
@@ -109,18 +109,5 @@ trait ModelRelations
             
             $q->whereNull('parent_id');
         }]);
-    }
-
-    public function primaryId(): int
-    {
-        return $this->getAttribute($this->primaryKey);
-    }
-
-    public function morphsArray(): array
-    {
-        return [
-            $this->morphName.'_id'   => $this->primaryId(),
-            $this->morphName.'_type' => get_class($this),
-        ];
     }
 }
