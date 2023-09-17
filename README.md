@@ -145,6 +145,10 @@ You can then modify the configuration file to change the comments table name if 
 To add a new comment, you can use the `add` method after `for` and `via` methods like this:
 
 ```php
+use App\Models\User;
+use App\Models\Post;
+use Melsaka\Commentable\Models\Comment;
+
 $post = Post::first();
 
 $owner = User::first();
@@ -155,7 +159,7 @@ $data = [
     'body'      =>  'this ia a new reply',
     'accepted'  =>  true,
     'rate'      =>  4.5,
-    'parent_id' =>  1,
+    'parent_id' =>  $parent->id,
 ];
 
 Comment::for($post)->via($owner)->add($data, $parent);
