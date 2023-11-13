@@ -42,7 +42,7 @@ class CreateCommentsTable extends Migration
             
             $table->text('body');
             $table->boolean('accepted')->default(true);
-            $table->double('rate', 15, 8)->nullable();
+            $table->double('rate', 3, 1)->nullable();
             $table->bigInteger('parent_id')->nullable();
 
             $table->timestamps();

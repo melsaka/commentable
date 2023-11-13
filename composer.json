@@ -17,11 +17,11 @@
         }
     ],
     "require": {
-        "php": "^7.3|^8.0",
-        "laravel/framework": "^8.75",
+        "php": "^8.1",
+        "laravel/framework": "^10.10",
         "kalnoy/nestedset": "v6.0.2"
     },
-    "minimum-stability": "dev",
+    "minimum-stability": "stable",
     "prefer-stable": true,
     "extra": {
         "laravel": {
